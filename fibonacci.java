@@ -4,7 +4,8 @@ public class fibonacci {
 	public static void main(String[] args) {
 		int input = 24;
 		
-		System.out.println(fib(input));
+		System.out.println("fib(input):  " + fib(input));
+		System.out.println("fibRecursive(input, new int[input + 1]): " + fibRecursive(input, new int[input + 1]));
 	}
 	
 	public static int fib (int n) {
@@ -21,6 +22,18 @@ public class fibonacci {
 		 
 		//Once we reached the last index, return the fibonnaci number in that index
 		return memory[n];
+	}
+	
+	public static int fibRecursive(int n, int[] memory) {
+		
+		if (n == 0 || n == 1) {
+			return n;
+		} else if (memory[n] != 0) {
+			return memory[n];
+		} else {
+			memory[n] = fibRecursive(n - 1, memory) + fibRecursive(n - 2, memory);
+			return memory[n];
+		}
 	}
 }
 
